@@ -19,4 +19,14 @@
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/order</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PizzaServlet</display-name>
+    <servlet-name>PizzaServlet</servlet-name>
+    <servlet-class>com.revature.servlet.PizzaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PizzaServlet</servlet-name>
+    <url-pattern>/pizzas</url-pattern>
+  </servlet-mapping>
 </web-app>

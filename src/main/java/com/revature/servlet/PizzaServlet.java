@@ -11,42 +11,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.beans.Order;
-import com.revature.daoimpl.OrderDaoImpl;
+import com.revature.beans.Pizza;
+import com.revature.daoimpl.PizzaDaoImpl;
 
 /**
- * Servlet implementation class OrderServlet
+ * Servlet implementation class PizzaServlet
  */
-public class OrderServlet extends HttpServlet {
+public class PizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OrderDaoImpl odi = new OrderDaoImpl();
+		PizzaDaoImpl pdi = new PizzaDaoImpl();
 		response.setContentType("application/json");
-		ArrayList<Order> orders = null;
+		ArrayList<Pizza> pizzas = null;
 		
 		try {
-			orders = new ArrayList<Order>(odi.getPastOrders());
+			pizzas = new ArrayList<Pizza>(pdi.getPizzaList());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		PrintWriter out = response.getWriter();
-		out.print(orders);
+		out.print(pizzas);
 		RequestDispatcher rd = request.getRequestDispatcher("order.html");
 		rd.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * What are we doing with POST method? Getting new order from page?
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
